@@ -1,14 +1,7 @@
-if (typeof global.DOMMatrix === "undefined") {
-  global.DOMMatrix = class DOMMatrix {};
-}
-if (typeof global.ImageData === "undefined") {
-  global.ImageData = class ImageData {};
-}
-if (typeof global.Path2D === "undefined") {
-  global.Path2D = class Path2D {};
-}
-
+const { getPath } = require("pdf-parse/worker");
 const { PDFParse } = require("pdf-parse");
+
+PDFParse.setWorker(getPath());
 
 function toBuffer(value) {
   if (!value) {
